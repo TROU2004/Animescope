@@ -1,0 +1,71 @@
+﻿<Window x:Class="Animescope.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Animescope" xmlns:view="clr-namespace:Animescope.View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <UniformGrid Columns="1">
+            <Button Style="{StaticResource MaterialDesignFlatButton}" Height="auto" Click="Button_Suggestion">
+                <Viewbox>
+                    <StackPanel Margin="5">
+                        <materialDesign:PackIcon Kind="ViewListOutline" Width="auto" Height="auto"></materialDesign:PackIcon>
+                        <TextBlock HorizontalAlignment="Center" FontSize="5">推荐</TextBlock>
+                    </StackPanel>
+                </Viewbox>
+            </Button>
+            <Button Style="{StaticResource MaterialDesignFlatButton}" Height="auto" Click="Button_Following">
+                <Viewbox>
+                    <StackPanel Margin="5">
+                        <materialDesign:PackIcon Kind="AccountDetails" Width="auto" Height="auto"></materialDesign:PackIcon>
+                        <TextBlock HorizontalAlignment="Center" FontSize="5">追番</TextBlock>
+                    </StackPanel>
+                </Viewbox>
+            </Button>
+            <Button Style="{StaticResource MaterialDesignFlatButton}" Height="auto" Cursor="Hand" Click="Button_History">
+                <Viewbox>
+                    <StackPanel Margin="5">
+                        <materialDesign:PackIcon Kind="History" Width="auto" Height="auto"></materialDesign:PackIcon>
+                        <TextBlock HorizontalAlignment="Center" FontSize="5">历史</TextBlock>
+                    </StackPanel>
+                </Viewbox>
+            </Button>
+        </UniformGrid>
+        <materialDesign:Transitioner x:Name="Transitioner_Main"  SelectedIndex="0" Grid.Column="2">
+            <materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:FadeWipe />
+                </materialDesign:TransitionerSlide.ForwardWipe>
+                <materialDesign:TransitionerSlide.BackwardWipe>
+                    <materialDesign:FadeWipe />
+                </materialDesign:TransitionerSlide.BackwardWipe>
+                <view:ViewSuggestion></view:ViewSuggestion>
+            </materialDesign:TransitionerSlide>
+            <materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:FadeWipe />
+                </materialDesign:TransitionerSlide.ForwardWipe>
+                <materialDesign:TransitionerSlide.BackwardWipe>
+                    <materialDesign:FadeWipe />
+                </materialDesign:TransitionerSlide.BackwardWipe>
+                <view:ViewFollowing></view:ViewFollowing>
+            </materialDesign:TransitionerSlide>
+            <materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:FadeWipe />
+                </materialDesign:TransitionerSlide.ForwardWipe>
+                <materialDesign:TransitionerSlide.BackwardWipe>
+                    <materialDesign:FadeWipe />
+                </materialDesign:TransitionerSlide.BackwardWipe>
+                <view:ViewHistory></view:ViewHistory>
+            </materialDesign:TransitionerSlide>
+        </materialDesign:Transitioner>
+    </Grid>
+</Window>

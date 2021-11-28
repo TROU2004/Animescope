@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Animescope.View.Control.AnimeEntry"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Animescope.View.Control"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="600">
+    <DockPanel HorizontalAlignment="Left">
+        <Image Stretch="Uniform" Grid.Row="0" Source="C:\Users\chenb\Desktop\20211006104144704.jpg"></Image>
+        <StackPanel Margin="10">
+            <TextBlock FontSize="30">名称</TextBlock>
+        </StackPanel>
+    </DockPanel>
+</UserControl>
