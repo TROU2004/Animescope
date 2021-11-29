@@ -1,4 +1,5 @@
-﻿using Animescope.Datacollect;
+﻿using Animescope.Anime;
+using Animescope.Datacollect;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,12 @@ namespace Animescope
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow Instance {  get; set; }
         public MainWindow()
         {
             InitializeComponent();
-            
+            Instance = this;
+            DataHandler.LoadSuggestionYHDM();
         }
 
         private void Button_Suggestion(object sender, RoutedEventArgs e)

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Animescope.Datacollect;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,11 @@ namespace Animescope.View.Control
         public AnimeList()
         {
             InitializeComponent();
+        }
+
+        public void UpdateSource(List<AnimeEntry> entries)
+        {
+            ListBox_Main.ItemsSource = entries;
         }
     }
 }

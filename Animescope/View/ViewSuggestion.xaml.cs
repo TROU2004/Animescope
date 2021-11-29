@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Animescope.Anime;
+using Animescope.Datacollect;
+using Animescope.View.Control;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,24 @@ namespace Animescope.View
         public ViewSuggestion()
         {
             InitializeComponent();
+        }
+
+        public void UpdateListBox(List<AnimeEntry> entries)
+        {
+            AnimeList.UpdateSource(entries);
+        }
+
+        private void Button_Search_Click(object sender, RoutedEventArgs e)
+        {
+            if (TextBox_Search.Text == "")
+            {
+                DataHandler.LoadSuggestionYHDM();
+            }
+            else
+            {
+                DataHandler.SearchYHDM(TextBox_Search.Text);
+            }
+            
         }
     }
 }

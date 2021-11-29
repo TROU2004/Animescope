@@ -46,7 +46,7 @@
                 <materialDesign:TransitionerSlide.BackwardWipe>
                     <materialDesign:FadeWipe />
                 </materialDesign:TransitionerSlide.BackwardWipe>
-                <view:ViewSuggestion></view:ViewSuggestion>
+                <view:ViewSuggestion x:Name="ViewSuggestion"></view:ViewSuggestion>
             </materialDesign:TransitionerSlide>
             <materialDesign:TransitionerSlide>
                 <materialDesign:TransitionerSlide.ForwardWipe>
