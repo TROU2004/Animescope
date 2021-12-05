@@ -1,4 +1,5 @@
 ﻿using Animescope.Datacollect;
+using MaterialDesignThemes.Wpf.Transitions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -31,12 +32,14 @@ namespace Animescope.View.Control
         {
             ListBox_Main.ItemsSource = entries;
         }
-
         private void ListBox_Main_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ListBox_Main.SelectedItem is AnimeEntry entry)
             {
-                //TODO...
+                MainWindow.Instance.Dispatcher.Invoke(() => {
+                    ((TransitionerSlide)MainWindow.Instance.Transitioner_Main.Items[3]).Content = new ViewAnimeDetail(entry);
+                    MainWindow.Instance.Transitioner_Main.SelectedIndex = 3;
+                });
             }
         }
     }

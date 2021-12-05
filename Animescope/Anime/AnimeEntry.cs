@@ -30,19 +30,26 @@ namespace Animescope.Datacollect
                 Labels = node.SelectSingleNode("./span[2]").InnerText,
                 PicURL = node.SelectSingleNode("./a/img").Attributes["src"].Value,
                 Link = node.SelectSingleNode("./a").Attributes["href"].Value,
-                ID = Regex.Match(node.SelectSingleNode("./a").Attributes["href"].Value, @"/\d+/g").Value
+                ID = Regex.Match(node.SelectSingleNode("./a").Attributes["href"].Value, "\\d+").Value
             };
         }
 
         public void Enrich(Action callback)
         {
             Task.Factory.StartNew(() => {
-                var doc = new HtmlWeb().LoadFromWebAsync($"{DataHandler.URL}show/{ID}.html", Encoding.UTF8).Result;
+                var doc = DataHandler.WEB.LoadFromWebAsync($"{DataHandler.URL}show/{ID}.html", Encoding.UTF8).Result;
                 var node = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div[2]");
                 Subtitle = node.SelectSingleNode("./div[2]/div[2]/p[1]").InnerText ?? "";
                 DescriptionLarge = Regex.Replace(node.SelectSingleNode("./div[7]").InnerText, "&.*?;", "");
                 callback.Invoke();
             });
+        }
+
+        public string FindMedia(string path)
+        {
+            var doc = DataHandler.WEB.LoadFromWebAsync($"{DataHandler.URL}v/{ID}-{path}.html", Encoding.UTF8).Result;
+            var node = doc.DocumentNode.SelectSingleNode("/html/body/div[4]/div/div").FirstChild;
+            return node.Attributes["data-vid"].Value.Replace("$", ".");
         }
     }
 }

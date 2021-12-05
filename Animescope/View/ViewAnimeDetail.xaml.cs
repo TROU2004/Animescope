@@ -21,10 +21,27 @@ namespace Animescope.View
     /// </summary>
     public partial class ViewAnimeDetail : UserControl
     {
+        public AnimeEntry AnimeEntry { get; set; }
         public ViewAnimeDetail(AnimeEntry animeEntry)
         {
             InitializeComponent();
-            DataContext = animeEntry;
+            AnimeEntry = animeEntry;
+            AnimeEntry.Enrich(() => {
+                Dispatcher.Invoke(() => {
+                    TextBlock_Description.Text = AnimeEntry.DescriptionLarge;
+                    TextBlock_State.Text = AnimeEntry.State;
+                    TextBlock_Subtitle.Text = AnimeEntry.Subtitle;
+                    TextBlock_Title.Text = AnimeEntry.Title;
+                    TextBlock_Labels.Text = AnimeEntry.Labels;
+                    Image_Main.Source = new BitmapImage(new Uri(AnimeEntry.PicURL));
+                });
+            });
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new Player(AnimeEntry).Show();
         }
     }
 }

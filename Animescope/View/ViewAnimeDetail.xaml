@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Animescope.View"
+             xmlns:local="clr-namespace:Animescope.View" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="700">
     <Grid Margin="5">
@@ -13,14 +13,14 @@
         </Grid.RowDefinitions>
         <Viewbox VerticalAlignment="Top" HorizontalAlignment="Left">
             <DockPanel>
-                <Image HorizontalAlignment="Left" Source="http://css.njhzmxx.com/acg/2021/07/13/20210713123748724.jpg"></Image>
+                <Image HorizontalAlignment="Left" Name="Image_Main"></Image>
                 <StackPanel Margin="20">
-                    <TextBlock Text="{Binding Title}" TextWrapping="Wrap" FontWeight="Black" Style="{StaticResource MaterialDesignHeadline4TextBlock}">进化之实</TextBlock>
-                    <TextBlock TextWrapping="Wrap" Style="{StaticResource MaterialDesignHeadline6TextBlock}">进化果实～不知不觉踏上胜利的人生～</TextBlock>
+                    <TextBlock Name="TextBlock_Title" TextWrapping="Wrap" FontWeight="Black" Style="{StaticResource MaterialDesignHeadline4TextBlock}"></TextBlock>
+                    <TextBlock Name="TextBlock_Subtitle" TextWrapping="Wrap" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
                     <StackPanel Margin="10">
-                        <TextBlock FontWeight="Black" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Foreground="HotPink">更新至全集11</TextBlock>
-                        <TextBlock Style="{StaticResource MaterialDesignHeadline6TextBlock}">啊啊 啊啊 啊啊</TextBlock>
-                        <TextBlock HorizontalAlignment="Left" Width="500" Foreground="DimGray" FontSize="15" TextWrapping="Wrap">《进化之实～踏上胜利的人生～》视动画《进化之实踏上胜利的人生》改编自同名轻小说，于2021年1月宣布动画化。 偶像培育学园里充满俊男美女，柊诚一却是又胖又丑还有强烈体臭</TextBlock>
+                        <TextBlock Name="TextBlock_State" FontWeight="Black" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Foreground="HotPink"></TextBlock>
+                        <TextBlock Name="TextBlock_Labels" Style="{StaticResource MaterialDesignHeadline6TextBlock}"></TextBlock>
+                        <TextBlock Name="TextBlock_Description" HorizontalAlignment="Left" Width="500" Foreground="DimGray" FontSize="15" TextWrapping="Wrap"></TextBlock>
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
@@ -34,8 +34,22 @@
             
             <Viewbox HorizontalAlignment="Right" >
                 <StackPanel>
-                    <Button Width="100" Height="100"></Button>
-                    <Button Width="100" Height="100"></Button>
+                    <Button Width="100" Height="100" Cursor="Hand">
+                        <Viewbox>
+                            <StackPanel Margin="5">
+                                <materialDesign:PackIcon Kind="FavoriteAdd" Width="auto" Height="auto"></materialDesign:PackIcon>
+                                <TextBlock HorizontalAlignment="Center" FontSize="7">追番</TextBlock>
+                            </StackPanel>
+                        </Viewbox>
+                    </Button>
+                    <Button Click="Button_Click" Width="100" Height="100" Cursor="Hand">
+                        <Viewbox>
+                            <StackPanel Margin="5">
+                                <materialDesign:PackIcon Kind="Play" Width="auto" Height="auto"></materialDesign:PackIcon>
+                                <TextBlock HorizontalAlignment="Center" FontSize="7">播放</TextBlock>
+                            </StackPanel>
+                        </Viewbox>
+                    </Button>
                 </StackPanel>
             </Viewbox>
         </Grid>

@@ -27,6 +27,7 @@ namespace Animescope
         {
             InitializeComponent();
             Instance = this;
+            DataHandler.InitWeb();
             DataHandler.LoadSuggestionYHDM();
         }
 

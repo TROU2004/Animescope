@@ -11,7 +11,11 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel HorizontalAlignment="Left">
-                        <Image Width="150" Source="{Binding PicURL}" Stretch="Uniform" Grid.Row="0"></Image>
+                        <Image Width="150" Stretch="Uniform" Grid.Row="0">
+                            <Image.Source>
+                                <BitmapImage CacheOption="OnLoad" UriSource="{Binding PicURL}"/>
+                            </Image.Source>
+                        </Image>
                         <StackPanel Margin="10">
                             <TextBlock Text="{Binding Title}" FontSize="30"></TextBlock>
                             <StackPanel Margin="10">

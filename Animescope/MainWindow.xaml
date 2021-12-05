@@ -13,7 +13,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <UniformGrid Columns="1">
-            <Button Style="{StaticResource MaterialDesignFlatButton}" Height="auto" Click="Button_Suggestion">
+            <Button Style="{StaticResource MaterialDesignFlatButton}" Height="auto" Click="Button_Suggestion" Cursor="Hand">
                 <Viewbox>
                     <StackPanel Margin="5">
                         <materialDesign:PackIcon Kind="ViewListOutline" Width="auto" Height="auto"></materialDesign:PackIcon>
@@ -24,7 +24,7 @@
             <Button Style="{StaticResource MaterialDesignFlatButton}" Height="auto" Click="Button_Following">
                 <Viewbox>
                     <StackPanel Margin="5">
-                        <materialDesign:PackIcon Kind="AccountDetails" Width="auto" Height="auto"></materialDesign:PackIcon>
+                        <materialDesign:PackIcon Kind="Favorite" Width="auto" Height="auto"></materialDesign:PackIcon>
                         <TextBlock HorizontalAlignment="Center" FontSize="5">追番</TextBlock>
                     </StackPanel>
                 </Viewbox>
@@ -38,34 +38,44 @@
                 </Viewbox>
             </Button>
         </UniformGrid>
-        <materialDesign:Transitioner x:Name="Transitioner_Main"  SelectedIndex="0" Grid.Column="2">
-            <materialDesign:TransitionerSlide>
-                <materialDesign:TransitionerSlide.ForwardWipe>
-                    <materialDesign:FadeWipe />
-                </materialDesign:TransitionerSlide.ForwardWipe>
-                <materialDesign:TransitionerSlide.BackwardWipe>
-                    <materialDesign:FadeWipe />
-                </materialDesign:TransitionerSlide.BackwardWipe>
-                <view:ViewSuggestion x:Name="ViewSuggestion"></view:ViewSuggestion>
-            </materialDesign:TransitionerSlide>
-            <materialDesign:TransitionerSlide>
-                <materialDesign:TransitionerSlide.ForwardWipe>
-                    <materialDesign:FadeWipe />
-                </materialDesign:TransitionerSlide.ForwardWipe>
-                <materialDesign:TransitionerSlide.BackwardWipe>
-                    <materialDesign:FadeWipe />
-                </materialDesign:TransitionerSlide.BackwardWipe>
-                <view:ViewFollowing></view:ViewFollowing>
-            </materialDesign:TransitionerSlide>
-            <materialDesign:TransitionerSlide>
-                <materialDesign:TransitionerSlide.ForwardWipe>
-                    <materialDesign:FadeWipe />
-                </materialDesign:TransitionerSlide.ForwardWipe>
-                <materialDesign:TransitionerSlide.BackwardWipe>
-                    <materialDesign:FadeWipe />
-                </materialDesign:TransitionerSlide.BackwardWipe>
-                <view:ViewHistory></view:ViewHistory>
-            </materialDesign:TransitionerSlide>
-        </materialDesign:Transitioner>
+        <Grid Grid.Column="2" Name="Grid_Transitioner">
+            <materialDesign:Transitioner x:Name="Transitioner_Main"  SelectedIndex="0" >
+                <materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide.ForwardWipe>
+                        <materialDesign:FadeWipe />
+                    </materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:TransitionerSlide.BackwardWipe>
+                        <materialDesign:FadeWipe />
+                    </materialDesign:TransitionerSlide.BackwardWipe>
+                    <view:ViewSuggestion x:Name="ViewSuggestion"></view:ViewSuggestion>
+                </materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide.ForwardWipe>
+                        <materialDesign:FadeWipe />
+                    </materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:TransitionerSlide.BackwardWipe>
+                        <materialDesign:FadeWipe />
+                    </materialDesign:TransitionerSlide.BackwardWipe>
+                    <view:ViewFollowing></view:ViewFollowing>
+                </materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide.ForwardWipe>
+                        <materialDesign:FadeWipe />
+                    </materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:TransitionerSlide.BackwardWipe>
+                        <materialDesign:FadeWipe />
+                    </materialDesign:TransitionerSlide.BackwardWipe>
+                    <view:ViewHistory></view:ViewHistory>
+                </materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide.ForwardWipe>
+                        <materialDesign:FadeWipe />
+                    </materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:TransitionerSlide.BackwardWipe>
+                        <materialDesign:FadeWipe />
+                    </materialDesign:TransitionerSlide.BackwardWipe>
+                </materialDesign:TransitionerSlide>
+            </materialDesign:Transitioner>
+        </Grid>
     </Grid>
 </Window>
