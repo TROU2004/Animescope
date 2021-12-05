@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Animescope.View.ViewAnimeDetail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Animescope.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="700">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.8*"/>
+        </Grid.RowDefinitions>
+        <Viewbox VerticalAlignment="Top" HorizontalAlignment="Left">
+            <DockPanel>
+                <Image HorizontalAlignment="Left" Source="http://css.njhzmxx.com/acg/2021/07/13/20210713123748724.jpg"></Image>
+                <StackPanel Margin="20">
+                    <TextBlock Text="{Binding Title}" TextWrapping="Wrap" FontWeight="Black" Style="{StaticResource MaterialDesignHeadline4TextBlock}">进化之实</TextBlock>
+                    <TextBlock TextWrapping="Wrap" Style="{StaticResource MaterialDesignHeadline6TextBlock}">进化果实～不知不觉踏上胜利的人生～</TextBlock>
+                    <StackPanel Margin="10">
+                        <TextBlock FontWeight="Black" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Foreground="HotPink">更新至全集11</TextBlock>
+                        <TextBlock Style="{StaticResource MaterialDesignHeadline6TextBlock}">啊啊 啊啊 啊啊</TextBlock>
+                        <TextBlock HorizontalAlignment="Left" Width="500" Foreground="DimGray" FontSize="15" TextWrapping="Wrap">《进化之实～踏上胜利的人生～》视动画《进化之实踏上胜利的人生》改编自同名轻小说，于2021年1月宣布动画化。 偶像培育学园里充满俊男美女，柊诚一却是又胖又丑还有强烈体臭</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+        </Viewbox>
+        <Grid Grid.Row="1">
+            <DockPanel LastChildFill="False">
+                <Button VerticalAlignment="Top"></Button>
+                <Button VerticalAlignment="Top" Cursor="Hand"></Button>
+                <Button VerticalAlignment="Top"></Button>
+            </DockPanel>
+            
+            <Viewbox HorizontalAlignment="Right" >
+                <StackPanel>
+                    <Button Width="100" Height="100"></Button>
+                    <Button Width="100" Height="100"></Button>
+                </StackPanel>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</UserControl>

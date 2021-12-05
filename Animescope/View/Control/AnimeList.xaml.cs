@@ -31,5 +31,13 @@ namespace Animescope.View.Control
         {
             ListBox_Main.ItemsSource = entries;
         }
+
+        private void ListBox_Main_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListBox_Main.SelectedItem is AnimeEntry entry)
+            {
+                //TODO...
+            }
+        }
     }
 }

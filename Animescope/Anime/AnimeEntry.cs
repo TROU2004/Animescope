@@ -1,4 +1,5 @@
-﻿using HtmlAgilityPack;
+﻿using Animescope.Anime;
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,13 @@ namespace Animescope.Datacollect
     {
         public string Title { get; set; }
         public string Description { get; set; }
+        public string DescriptionLarge { get; set; }
         public string Labels { get; set; }
         public string State { get; set; }
         public string PicURL { get; set; }
         public string Link { get; set; }
         public string ID { get; set; }
+        public string Subtitle { get; set; }
 
         public static AnimeEntry FromTopHtml(HtmlNode node) {
             return new AnimeEntry()
@@ -29,6 +32,17 @@ namespace Animescope.Datacollect
                 Link = node.SelectSingleNode("./a").Attributes["href"].Value,
                 ID = Regex.Match(node.SelectSingleNode("./a").Attributes["href"].Value, @"/\d+/g").Value
             };
+        }
+
+        public void Enrich(Action callback)
+        {
+            Task.Factory.StartNew(() => {
+                var doc = new HtmlWeb().LoadFromWebAsync($"{DataHandler.URL}show/{ID}.html", Encoding.UTF8).Result;
+                var node = doc.DocumentNode.SelectSingleNode("/html/body/div[2]/div[2]");
+                Subtitle = node.SelectSingleNode("./div[2]/div[2]/p[1]").InnerText ?? "";
+                DescriptionLarge = Regex.Replace(node.SelectSingleNode("./div[7]").InnerText, "&.*?;", "");
+                callback.Invoke();
+            });
         }
     }
 }

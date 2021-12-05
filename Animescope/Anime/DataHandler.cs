@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Animescope.Anime
 {
-    internal class DataHandler
+    public class DataHandler
     {
-        static readonly string URL = "http://www.yinghuacd.com/";
+        public static readonly string URL = "http://www.yinghuacd.com/";
         public static void LoadSuggestionYHDM()
         {
             if (MainWindow.Instance != null)
